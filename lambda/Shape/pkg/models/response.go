@@ -7,3 +7,11 @@ type DynamoModel struct {
 	A         int64  `json:"a"       dynamodbav:"a"`
 	B         int64  `json:"b"       dynamodbav:"b"`
 }
+
+type Shape string
+
+const (
+	Rectangle Shape = "RECTANGLE"
+	Triangle        = "TRIANGLE"
+	Ellipse         = "ELLIPSE"
+)

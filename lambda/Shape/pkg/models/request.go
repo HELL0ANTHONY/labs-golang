@@ -1,6 +1,6 @@
 package models
 
-type Shape struct {
+type Request struct {
 	Creator   string `json:"creador"`
 	ShapeType string `json:"tipo"`
 	A         int64  `json:"a"`
