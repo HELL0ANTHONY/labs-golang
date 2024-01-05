@@ -21,11 +21,11 @@ func New(p processor.ProcessorService, v validation.ValidationService) Handler {
 	}
 }
 
-func (h Handler) Handle(ctx context.Context, req models.Request) error {
+func (h Handler) Handle(ctx context.Context, req models.Request) (float64, error) {
 	log.Printf("%#v", req)
 
 	if err := h.v.Validator(req); err != nil {
-		return err
+		return 0.0, err
 	}
 
 	return h.p.Process(req)
