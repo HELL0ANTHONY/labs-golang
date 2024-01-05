@@ -25,6 +25,7 @@ func (h Handler) Handle(ctx context.Context, req models.Request) (float64, error
 	log.Printf("%#v", req)
 
 	if err := h.v.Validator(req); err != nil {
+		log.Println(err)
 		return 0.0, err
 	}
 
