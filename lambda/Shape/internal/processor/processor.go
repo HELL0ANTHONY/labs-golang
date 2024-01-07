@@ -19,17 +19,19 @@ func New() ProcessorService {
 
 func (p Processor) Process(req models.Request) (float64, error) {
 	log.Printf("PROCESSOR: %+v", req)
+	a := req.A
+	b := req.B
 
 	if req.ShapeType == string(models.Ellipse) {
-		return p.ellipse(req.A, req.B), nil
+		return p.ellipse(a, b), nil
 	}
 
 	if req.ShapeType == string(models.Rectangle) {
-		return p.rectangle(req.A, req.B), nil
+		return p.rectangle(a, b), nil
 	}
 
 	if req.ShapeType == string(models.Triangle) {
-		return p.triangle(req.A, req.B), nil
+		return p.triangle(a, b), nil
 	}
 
 	return 0.0, nil
