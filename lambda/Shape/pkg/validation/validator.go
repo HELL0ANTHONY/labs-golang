@@ -2,6 +2,7 @@ package validation
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/HELL0ANTHONY/labs-golang/lambda/Shape/pkg/models"
 )
@@ -23,7 +24,7 @@ func (Validation) Validator(req models.Request) error {
 		models.Triangle:  true,
 	}
 
-	if !validShapes[models.Shape(req.ShapeType)] {
+	if !validShapes[models.Shape(strings.ToUpper(req.ShapeType))] {
 		return errors.New(req.ShapeType + " it is not a valid option")
 	}
 
