@@ -1,9 +1,9 @@
 package models
 
-type DynamoModel struct {
-	ID        string  `json:"id"      dynamodbav:"id"`
+type Record struct {
+	ID        string  `json:"id"      dynamodbav:"id"` // PK
 	Creator   string  `json:"creador" dynamodbav:"creador"`
-	ShapeType string  `json:"tipo"    dynamodbav:"tipo"`
+	ShapeType string  `json:"tipo"    dynamodbav:"tipo"` // SK
 	A         float64 `json:"a"       dynamodbav:"a"`
 	B         float64 `json:"b"       dynamodbav:"b"`
 }
