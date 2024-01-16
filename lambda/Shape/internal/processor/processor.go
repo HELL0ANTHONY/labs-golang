@@ -4,21 +4,36 @@ import (
 	"log"
 	"math"
 
+	"github.com/HELL0ANTHONY/labs-golang/lambda/Shape/internal/repository"
 	"github.com/HELL0ANTHONY/labs-golang/lambda/Shape/pkg/models"
 )
 
-type Processor struct{}
+type Processor struct {
+	d repository.DynamoDBService
+}
 
 type ProcessorService interface {
 	Process(models.Request) (float64, error)
 }
 
-func New() ProcessorService {
-	return Processor{}
+func New(d repository.DynamoDBService) ProcessorService {
+	return Processor{
+		d: d,
+	}
 }
 
 func (p Processor) Process(req models.Request) (float64, error) {
 	log.Printf("PROCESSOR: %+v", req)
+
+	id := req.ID
+	if id != "" {
+		m, err := p.d.FindClientBy(id)
+		if err != nil {
+			return 0, err
+		}
+		log.Printf("%#v", m)
+	}
+
 	a := req.A
 	b := req.B
 
