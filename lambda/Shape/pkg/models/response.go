@@ -1,11 +1,12 @@
 package models
 
+// ID        string  `json:"id"      dynamodbav:"id"` // PK
 type Record struct {
-	ID        string  `json:"id"      dynamodbav:"id"` // PK
-	Creator   string  `json:"creador" dynamodbav:"creador"`
-	ShapeType string  `json:"tipo"    dynamodbav:"tipo"` // SK
-	A         float64 `json:"a"       dynamodbav:"a"`
-	B         float64 `json:"b"       dynamodbav:"b"`
+	ID        string `json:"id"` // PK
+	Creator   string `json:"creador"`
+	ShapeType string `json:"tipo"` // SK
+	A         int    `json:"a"`
+	B         int    `json:"b"`
 }
 
 type Shape string

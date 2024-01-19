@@ -3,6 +3,7 @@ package processor
 import (
 	"log"
 	"math"
+	"strings"
 
 	"github.com/HELL0ANTHONY/labs-golang/lambda/Shape/internal/repository"
 	"github.com/HELL0ANTHONY/labs-golang/lambda/Shape/pkg/models"
@@ -36,20 +37,21 @@ func (p Processor) Process(req models.Request) (float64, error) {
 
 	a := req.A
 	b := req.B
+	s := strings.ToUpper(req.ShapeType)
 
-	if req.ShapeType == string(models.Ellipse) {
+	if s == string(models.Ellipse) {
 		return p.ellipse(a, b), nil
 	}
 
-	if req.ShapeType == string(models.Rectangle) {
+	if s == string(models.Rectangle) {
 		return p.rectangle(a, b), nil
 	}
 
-	if req.ShapeType == string(models.Triangle) {
+	if s == string(models.Triangle) {
 		return p.triangle(a, b), nil
 	}
 
-	return 0.0, nil
+	return 0, nil
 }
 
 func (Processor) triangle(a, b float64) float64 {
